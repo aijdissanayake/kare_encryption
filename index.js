@@ -1,7 +1,11 @@
 const crypto = require('crypto');
 
-module.exports = function hashMessage(string) {
+function kare_encryption(){}
+
+kare_encryption.prototype.hashMessage = function (message) {
     const hash = crypto.createHash('sha256');
-    hash.update(string);
+    hash.update(message);
     return hash.digest('hex');
 };
+
+module.exports = kare_encryption;
