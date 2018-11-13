@@ -1,4 +1,13 @@
 {
     "name": "kare_encryption",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "cryptographic functions for secure communication",
+    "license": "MIT",
+    "repository": "aijdissanayake/kare_encryption",
+    "main": "index.js",
+    "keywords": [
+        "encryption",
+        "npm",
+        "package"
+    ]
 }
