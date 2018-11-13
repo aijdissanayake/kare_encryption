@@ -9,5 +9,5 @@ $ npm install kare_encryption
 ## Usage
 
 ```js
-const tiny = require("kare_encryption");
+const kare_enc = require("kare_encryption");
 ```
