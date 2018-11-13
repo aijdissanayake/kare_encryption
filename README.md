@@ -9,5 +9,6 @@ $ npm install kare_encryption
 ## Usage
 
 ```js
-const kare_enc = require("kare_encryption");
+const kare_enc = new (require('kare_encryption'));
+msgHash = kare_enc.hashMessage("abcd");
 ```
