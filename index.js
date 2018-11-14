@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const NodeRSA = require('node-rsa');
 
 function kare_encryption(){}
 
@@ -8,25 +9,12 @@ kare_encryption.prototype.hashMessage = function (message) {
     return hash.digest('hex');
 };
 
-kare_encryption.prototype.generateRSAKeyPair = function (passphrase) {
-    var publicKey, privateKey;
-    crypto.generateKeyPair('rsa', {
-        modulusLength: 4096,
-        publicKeyEncoding: {
-          type: 'spki',
-          format: 'pem'
-        },
-        privateKeyEncoding: {
-          type: 'pkcs8',
-          format: 'pem',
-          cipher: 'aes-256-cbc',
-          passphrase: passphrase
-        }
-      }, (err, publicKey, privateKey) => {
-            this.privateKey = privateKey;
-            this.publicKey = publicKey;
-      });
-
+kare_encryption.prototype.generateRSAKeyPair = function (keyLength) {
+    
+    keyLength = keyLength || 2048;
+    const key = new NodeRSA({b: keyLength});
+    const publicKey = key.exportKey('pkcs8-public-pem');
+    const privateKey = key.exportKey('pkcs8-private-pem');
     return {publicKey: publicKey, privateKey: privateKey};
 };
 
