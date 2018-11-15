@@ -33,4 +33,16 @@ kare_encryption.prototype.privateKeyDecrypt = function (encryptedMessage, privat
 
 }
 
+kare_encryption.prototype.signMessage = function (message, privateKey) {
+    const key = new NodeRSA(privateKey);
+    const sign = key.sign(message, 'base64');
+    return sign;
+}
+
+kare_encryption.prototype.verifyMessage = function (message, sign, publicKey) {
+    const key = new NodeRSA(publicKey);
+    const verification = key.verify(message, sign, 'utf8', 'base64');
+    return verification;
+}
+
 module.exports = kare_encryption;
