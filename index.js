@@ -26,10 +26,10 @@ kare_encryption.prototype.publicKeyEncrypt = function (message, publicKey) {
 
 }
 
-kare_encryption.prototype.privateKeyDecrypt = function (message, privateKey) {
+kare_encryption.prototype.privateKeyDecrypt = function (encryptedMessage, privateKey) {
     const key = new NodeRSA(privateKey);
-    enc = key.decrypt(message, 'base64');
-    return enc;
+    dec = key.decrypt(encryptedMessage).toString('utf8');
+    return dec;
 
 }
 
