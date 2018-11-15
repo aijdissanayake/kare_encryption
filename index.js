@@ -7,7 +7,7 @@ kare_encryption.prototype.hashMessage = function (message) {
     const hash = crypto.createHash('sha256');
     hash.update(message);
     return hash.digest('hex');
-    
+
 };
 
 kare_encryption.prototype.generateRSAKeyPair = function (keyLength) {    
@@ -19,9 +19,16 @@ kare_encryption.prototype.generateRSAKeyPair = function (keyLength) {
 
 };
 
-kare_encryption.prototype.privateKeyEncrypt = function (message, privateKey) {
-    const key = new NodeRSA(privateKey);
+kare_encryption.prototype.publicKeyEncrypt = function (message, publicKey) {
+    const key = new NodeRSA(publicKey);
     enc = key.encrypt(message, 'base64');
+    return enc;
+
+}
+
+kare_encryption.prototype.privateKeyDecrypt = function (message, privateKey) {
+    const key = new NodeRSA(privateKey);
+    enc = key.decrypt(message, 'base64');
     return enc;
 
 }
