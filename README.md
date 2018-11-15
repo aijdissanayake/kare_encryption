@@ -13,12 +13,15 @@ $ npm install kare_encryption
 const kare_enc = new (require('kare_encryption'));
 ```
 
+### Hash
+
 ```hashMessage(message)``` - Returns SHA256 Hash value, given a message as the input parameter.
 
 ##### Example :
 ```js
 msgHash = kare_enc.hashMessage("abcd"); //generates SHA256 hsh of "abcd"
 ```
+### Generate RSA Key Pair
 
 ```generateRSAKeyPair([keyLength])``` - Returns a private public key pair in the form of ```pkcs8-pem``` in a json object structured as ```{publicKey: publicKey, privateKey: privateKey}```.  ``` keyLength``` is an optional parameter defaulted to ```2048```.
 
@@ -27,6 +30,7 @@ msgHash = kare_enc.hashMessage("abcd"); //generates SHA256 hsh of "abcd"
 keyPair = kare_enc.generateRSAKeyPair(3072); //generates a RSA key pair of bit-length 3072
 keyPair = kare_enc.generateRSAKeyPair(); //generates a RSA key pair of bit-length 2048 - default key length
 ```
+### Encrypt
 
 ```publicKeyEncrypt(message, publicKey)``` - Returns the encrypted value in ```base64``` format, given a message and the public key in ```pkcs8-pem``` format.
 
@@ -35,6 +39,8 @@ keyPair = kare_enc.generateRSAKeyPair(); //generates a RSA key pair of bit-lengt
 const publicKey = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3TgRFRR+YaLwu6Re7901\nNeGxP6q0+Kj5SDStNjkH4KGnr/pz+QX+fI6Wvy5WONvAhwV+jcQEux6yqGUB9R6v\n2j10tizAFSD8LJD7TwfYVVXMHXVQlcF69Ab7n8TNmSzxI76IcSiOl3eJUPyhj+fz\nGvJv/QVNxmblvLcaoqqDpPZJFZBNIdG9MWxjbgQ6/Vr4kLEiptMQoNo2eMUjJ/Sz\ngrVD/FdDD9vkdhHyemkUNqZI3E0zBbyS4u/P3DGakAyteMIRXTe1j4+M6EpQKRAp\n22Ke7sg5lUbGuHI0OBstCnTjPK4NLS9NeGlgezBUVt+288PFnfgWEZe5FE7MoyiG\nawIDAQAB\n-----END PUBLIC KEY-----";
 const encryptedMessage = kare_enc.publicKeyEncrypt("abcdef", publicKey); //generates the encrypted value of "abcdef"
 ```
+
+### Decrypt
 
 ```privateKeyDecrypt(encryptedMessage, privateKey)``` - Returns the derypted value in ```utf8``` encoded string format, given the encrypted value in ```base64``` format and the private key in ```pkcs8-pem``` format.
 
