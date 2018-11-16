@@ -1,6 +1,6 @@
 {
     "name": "kare_encryption",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "description": "cryptographic functions for secure communication",
     "license": "MIT",
     "repository": "aijdissanayake/kare_encryption",
