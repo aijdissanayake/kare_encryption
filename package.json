@@ -9,5 +9,8 @@
         "encryption",
         "npm",
         "package"
-    ]
+    ],
+    "dependencies": {
+        "node-rsa": "^1.0.1"
+    }
 }
